@@ -326,20 +326,16 @@ return [
             'url'  => 'admin/settings',
             'icon' => 'nav-icon fas fa-table',
         ],
-        [
-            'text' => 'Cadastrar Empresa',
-            'url'  => 'admin/settings',
-            'icon' => 'nav-icon fas fa-table',
-        ],
+
         [   'text' => 'Cadastrar Empresa',    
-           // 'url'  => route('empresas.create'), 
            'url' => '/empresas/create',
             'icon' => 'nav-icon fas fa-building',],
 
         [
             'text' => 'Cadastrar Fornecedor',
-            'url'  => 'admin/settings',
-            'icon' => 'nav-icon fas fa-table',
+            'url' => '/fornecedores/create',
+//            'url'  => 'admin/settings',
+            'icon' => 'fas fa-people-carry',
 
             
         ],
