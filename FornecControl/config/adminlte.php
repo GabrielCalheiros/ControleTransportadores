@@ -311,7 +311,6 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        ['header' => 'Configurações de Conta'],
         [
             'text' => 'Cadastro',
             'url'  => 'admin/settings',
@@ -322,9 +321,8 @@ return [
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
-        ['header' => 'Gerenciamento de Fornecedores'],
         [
-            'text' => 'Listagem de Fornecedores',
+            'text' => 'Listagem',
             'url'  => 'admin/settings',
             'icon' => 'nav-icon fas fa-table',
         ],
@@ -336,7 +334,7 @@ return [
         [
             'text' => 'Cadastrar Fornecedor',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'nav-icon fas fa-table',
 
             
         ],
