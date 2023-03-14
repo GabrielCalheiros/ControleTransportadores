@@ -38,11 +38,6 @@ The map of the site is as it follows:
 
 -------------------------------------------------------------------------------
 
-Add initial page with two options: "Cadastro" and "Login"
-Create "Cadastro Como Fornecedor" page with necessary fields
-Create "Cadastro Como Empresa" page with necessary fields
-Create separate login page for both types of users
-Create authentication and authorization system to redirect user to appropriate dashboard
 Create separate dashboard for "Fornecedor" users with options: "Listagem de Empresas", "Adicionar Empresas", "Editar Login" and "Logout"
 Create separate dashboard for "Empresa" users with options: "Listagem de Transportadores", "Adicionar Transportadores", "Editar Login" and "Logout"
 Implement validation rules for different types of fields on the registration pages
@@ -53,3 +48,36 @@ Implement search and filter functionality on the "Listagem de Fornecedores" page
 Implement restriction to only allow "Empresa" users to add a "Transportador" that already exists in the database
 Implement restriction to only allow "Transportador" users to add an "Empresa" that already exists in the database
 Add necessary tests to ensure functionality and prevent regressions
+
+
+
+------------------------------------------------------------------------------------
+ADD cadastro de empresa
+
+1 - Create a new route in your web.php file that points to a controller method to handle the form submission:
+2 - Create a new controller using the command php artisan make:controller EmpresaController, and define a store method that receives the form data and saves it to the database:
+3 - Create a new blade view file, for example empresas/create.blade.php, that contains the form to register a new company:
+4 - Finally, add a new menu item to your AdminLTE sidebar that links to the new page. You can do this by adding the following code to the menu.blade.php file:
+
+
+Tecchnical Table:
+Framework: Laravel+Admin AdminLTE
+System: This is a system that uses the Laravel framework with the AdminLTE UI to create a simple system of tracking Forcenedores and Empresas.
+Regras de negócio:
+O Menu principal contém os seguintes items:
+Cadastro - To edit the login
+Mudar Senha - Change the password
+Listagem - This is the dashboard page, where the list os Fornecedores of an especific Empresa are listed. 
+Cadastrar Empresa - Create an Empresa in the database
+    Empresa as the following variables: 
+    • Endereço;
+    • Nome Fantasia;
+    • CNPJ.
+    • An array of Fornecedores 
+Cadastrar Fornecedor - Create an Fornecedor in the database
+    Fornecedor as the following variables: 
+    • Empresa (the id of an company in the database that this Fornecedor is signed on);
+    • Nome;
+    • CPF ou CNPJ;
+    • Data/hora de cadastro;
+    • Telefone (An array of cellphones).
