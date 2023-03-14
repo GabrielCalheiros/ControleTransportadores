@@ -23,4 +23,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //Route::post('/empresas', 'EmpresaController@store')->name('empresas.store');
 //Route::post('/empresas', [App\Http\Controllers\EmpresaController::class, 'store'])->name('empresas.store');
+//Route::get('/empresas/create', [App\Http\Controllers\EmpresaController::class, 'create'])->name('empresas.create');
+//Route::post('/empresas', [App\Http\Controllers\EmpresaController::class, 'store'])->name('empresas.store');
+
 Route::get('/empresas/create', [App\Http\Controllers\EmpresaController::class, 'create'])->name('empresas.create');
+Route::post('/empresas', [App\Http\Controllers\EmpresaController::class, 'store'])->name('empresas.store');

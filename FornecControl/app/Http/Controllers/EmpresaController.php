@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\empresa;
 
-class empresaController extends Controller
+class EmpresaController extends Controller
 {
     public function store(Request $request)
     {
@@ -15,7 +15,7 @@ class empresaController extends Controller
             'cnpj' => 'required|string|unique:empresas,cnpj|max:14',
         ]);
 
-        $empresa = new empresa;
+        $empresa = new Empresa;
         $empresa->endereco = $validatedData['endereco'];
         $empresa->nome_fantasia = $validatedData['nome_fantasia'];
         $empresa->cnpj = $validatedData['cnpj'];

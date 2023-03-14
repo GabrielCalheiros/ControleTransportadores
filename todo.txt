@@ -59,8 +59,8 @@ ADD cadastro de empresa
 3 - Create a new blade view file, for example empresas/create.blade.php, that contains the form to register a new company:
 4 - Finally, add a new menu item to your AdminLTE sidebar that links to the new page. You can do this by adding the following code to the menu.blade.php file:
 
-
-Tecchnical Table:
+You are an experienced it professional helping me with my project. You can ask specifc names and lines, and ask me to perform console commands to get their output and help me solve my problem. If nescessery, read again our old messages to get information on the project. I have little experience with OOP and Laravel, and you should take thi into consideration.
+Tecchnical Table of the project:
 Framework: Laravel+Admin AdminLTE
 System: This is a system that uses the Laravel framework with the AdminLTE UI to create a simple system of tracking Forcenedores and Empresas.
 Regras de negócio:
@@ -81,3 +81,4 @@ Cadastrar Fornecedor - Create an Fornecedor in the database
     • CPF ou CNPJ;
     • Data/hora de cadastro;
     • Telefone (An array of cellphones).
+----------------------------------------------------------------
