@@ -1,0 +1,55 @@
+The project:
+Enunciado do teste:
+Criar uma listagem de fornecedores relacionado a uma empresa;
+A empresa deverá ser composta por:
+• Endereço;
+• Nome Fantasia;
+• CNPJ.
+O fornecedor deverá ser composto por:
+• Empresa;
+• Nome;
+• CPF ou CNPJ;
+• Data/hora de cadastro;
+• Telefone (Quantidade de telefones é variável).
+Regras:
+• O campo ‘Empresa’ em Fornecedor será um cadastro a parte;
+• O campo ‘Endereço’ em Empresa deverá ser utilizado uma API para buscar o CEP
+https://viacep.com.br/
+• Caso a empresa seja do Paraná, não permitir cadastrar um fornecedor pessoa física menor de
+idade;
+• Caso o fornecedor seja pessoa física, também é necessário cadastrar o RG e a data de
+nascimento;
+• A listagem de fornecedores deverá conter filtros por Nome, CPF/CNPJ e data de cadastro.
+Tecnologias:
+• Backend:  Laravel
+• Frontend: AdminLTE, Bootstrap 4.5
+the first two commits were to create the laravel project and the second to add AdminLTE. List what should be the rest of the commits to finish the project.
+The map of the site is as it follows:
+-Initial page with two option, cadastro and Login.
+- Cadastro page as two options, Cadastro como Fornecedor and Cadastro Como Empresa
+- É preciso levar em consideração as diferenção de campo em cadastro
+- a página de login é única e identifica se você é empresa ou fornecedor
+- e te redireciona para a dashboard
+- existem dois tipos de dashboard dependendo do seu cadastro
+- dentro do dashboard do transportador existem as opções listagem de empresas, adicionar empresas editar login e logout
+- dentro do dashboard da empresa existem as opções listagem de transportadores, adicionar transportadores editar login e logout
+- uma empresa só pode adicionar na sua lista de transportadores um transportador com cadastro no banco
+- um transportador só pode adicionar em sua lista de empresas uma empresa que já está no banco
+
+-------------------------------------------------------------------------------
+
+Add initial page with two options: "Cadastro" and "Login"
+Create "Cadastro Como Fornecedor" page with necessary fields
+Create "Cadastro Como Empresa" page with necessary fields
+Create separate login page for both types of users
+Create authentication and authorization system to redirect user to appropriate dashboard
+Create separate dashboard for "Fornecedor" users with options: "Listagem de Empresas", "Adicionar Empresas", "Editar Login" and "Logout"
+Create separate dashboard for "Empresa" users with options: "Listagem de Transportadores", "Adicionar Transportadores", "Editar Login" and "Logout"
+Implement validation rules for different types of fields on the registration pages
+Implement the use of API to fetch CEP data for the "Endereço" field on the "Empresa" page
+Implement rule to not allow "Fornecedor" users to register if they are under age in the state of Paraná
+Implement additional fields for "Fornecedor" users if they are "pessoa física": "RG" and "Data de Nascimento"
+Implement search and filter functionality on the "Listagem de Fornecedores" page, by "Nome", "CPF/CNPJ" and "Data de Cadastro"
+Implement restriction to only allow "Empresa" users to add a "Transportador" that already exists in the database
+Implement restriction to only allow "Transportador" users to add an "Empresa" that already exists in the database
+Add necessary tests to ensure functionality and prevent regressions
