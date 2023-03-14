@@ -23,4 +23,9 @@ class empresaController extends Controller
 
         return redirect()->back()->with('success', 'empresa cadastrada com sucesso!');
     }
+
+    public function create()
+{
+    return view('cadastroEmpresa');
+}
 }
