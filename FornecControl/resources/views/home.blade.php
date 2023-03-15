@@ -33,7 +33,6 @@
             <th>CPF/CNPJ</th>
             <th>Data de Cadastro</th>
             <th>Telefones</th>
-            <th>Empresa</th>
         </tr>
     </thead>
     <tbody>
@@ -44,7 +43,6 @@
                     <td>{{ $fornecedor->cpf_cnpj }}</td>
                     <td>{{ $fornecedor->data_cadastro }}</td>
                     <td>{{ $fornecedor->telefones }}</td>
-                    <td>{{ $fornecedor->empresa_id }}</td>
                 </tr>
             @endif
         @endforeach
