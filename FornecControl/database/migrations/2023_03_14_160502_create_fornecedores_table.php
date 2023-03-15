@@ -21,6 +21,9 @@ return new class extends Migration
             $table->unsignedBigInteger('empresa_id');
             $table->foreign('empresa_id')->references('id')->on('empresas');
             $table->timestamps(); // Add the timestamps fields
+            $table->string('rg')->nullable(); // Add the 'rg' column with the nullable property
+            $table->date('data_nascimento')->nullable(); // Add the 'data_nascimento' column with the nullable property
+        
         });
     }
 
