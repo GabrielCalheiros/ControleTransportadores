@@ -9,14 +9,6 @@ use App\Models\Empresa;
 class FornecedorController extends Controller
 {
     // Function to show a list of all Fornecedores
-    public function index()
-    {
-        // Get all Fornecedores from the database and eager load their associated Empresas
-        $fornecedores = Fornecedor::with('empresa')->get();
-
-        // Return the view with the list of Fornecedores
-        return view('fornecedores.index', compact('fornecedores'));
-    }
 
     // Function to show the form to create a new Fornecedor
     public function create()
@@ -58,5 +50,12 @@ class FornecedorController extends Controller
         // Redirect back to the list of Fornecedores
         return redirect()->back()->with('success', 'Fornecedor adicionado com sucesso!');
     }
+
+    public function index()
+{
+    $fornecedores = Fornecedor::all();
+    return view('home', ['fornecedores' => $fornecedores]);
+}
+
     
 }

@@ -30,4 +30,5 @@ Route::post('/empresas', [App\Http\Controllers\EmpresaController::class, 'store'
 
 Route::get('/fornecedores/create', [App\Http\Controllers\FornecedorController::class, 'create'])->name('fornecedores.create');
 Route::post('/fornecedores', [App\Http\Controllers\FornecedorController::class, 'store'])->name('fornecedores.store');
+Route::get('/fornecedores', [App\Http\Controllers\FornecedorController::class, 'index'])->name('fornecedores.index');
 

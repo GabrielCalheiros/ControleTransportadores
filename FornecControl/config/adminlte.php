@@ -311,19 +311,19 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        [
-            'text' => 'Cadastro',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'Mudar Senha',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
+//        [
+//            'text' => 'Cadastro',
+//            'url'  => 'admin/settings',
+//            'icon' => 'fas fa-fw fa-user',
+//       ],
+//        [
+//            'text' => 'Mudar Senha',
+//            'url'  => 'admin/settings',
+//            'icon' => 'fas fa-fw fa-lock',
+//        ],
         [
             'text' => 'Listagem',
-            'url'  => 'admin/settings',
+            'url'  => '/home',
             'icon' => 'nav-icon fas fa-table',
         ],
 
@@ -334,7 +334,6 @@ return [
         [
             'text' => 'Cadastrar Fornecedor',
             'url' => '/fornecedores/create',
-//            'url'  => 'admin/settings',
             'icon' => 'fas fa-people-carry',
 
             

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Fornecedor;
 
 use Illuminate\Http\Request;
 
@@ -23,6 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $fornecedores = Fornecedor::all();
+        return view('home', compact('fornecedores'));
     }
+    
 }
