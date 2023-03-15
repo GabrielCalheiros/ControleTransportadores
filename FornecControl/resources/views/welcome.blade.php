@@ -64,7 +64,9 @@
                             text-align: center;
                             width: 50%;
                             margin-left: 25%;
-                        "><p>Há dois tipos de painel, um para empresas e outro para fornecedores. No painel do fornecedor, você pode adicionar, editar e remover empresas, além de efetuar o logout. No painel da empresa, você pode adicionar, editar e remover fornecedores, além de efetuar o logout. É importante destacar que uma empresa só pode adicionar um transportador que já está no banco e o transportador só pode adicionar uma empresa que já está no banco.</p></div>
+                        "><p>FornecControl é um sistema que utiliza o framework Laravel juntamente com a interface do usuário AdminLTE para criar um sistema simples de rastreamento de Fornecedores e Empresas. O menu principal inclui as opções para adicionar uma nova Empresa, adicionar um novo Fornecedor e acessar uma página de dashboard onde a lista de Fornecedores para uma Empresa específica é exibida.
+
+</p></div>
                         
                         
                         
