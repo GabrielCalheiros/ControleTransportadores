@@ -31,6 +31,8 @@ class FornecedorController extends Controller
             'data_cadastro' => 'required|date',
             'telefones' => 'nullable|json',
             'empresa_id' => 'required|exists:empresas,id',
+            'rg' => 'nullable|max:20',
+            'data_nascimento' => 'nullable|date',
         ]);
     
         // Create a new Fornecedor object and set its properties
@@ -40,6 +42,8 @@ class FornecedorController extends Controller
         $fornecedor->data_cadastro = $request->data_cadastro;
         $fornecedor->telefones = $request->telefones;
         $fornecedor->empresa_id = $request->empresa_id;
+        $fornecedor->rg = $request->rg;
+        $fornecedor->data_nascimento = $request->data_nascimento;
     
         // Save the new Fornecedor to the database
         $fornecedor->save();
