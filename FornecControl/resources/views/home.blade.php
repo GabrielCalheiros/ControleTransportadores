@@ -3,7 +3,7 @@
 @section('title', 'AdminLTE')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Listagem</h1>
+    <h1 class="m-0 text-dark">Listagem de Fornecedores:</h1>
 @stop
 
 @section('content')
@@ -11,7 +11,24 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <p class="mb-0">Você está logado!</p>
+
+                    <form method="get" action="{{ route('home') }}">
+                        <div class="form-group">
+                            <label for="empresa_id">Filtrar por empresa:</label>
+                            <select class="form-control" id="empresa_id" name="empresa_id">
+                                <option value="">Todas as empresas</option>
+                                @foreach($empresas as $empresa)
+                                    <option value="{{ $empresa->id }}" {{ $empresa->id == $selectedEmpresaId ? 'selected' : '' }}>
+                                        {{ $empresa->nome_fantasia }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Filtrar</button>
+                    </form>
+                    
+
+
                     <table class="table">
                         <thead>
                             <tr>

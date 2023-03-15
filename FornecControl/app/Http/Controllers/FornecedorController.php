@@ -54,7 +54,8 @@ class FornecedorController extends Controller
     public function index()
 {
     $fornecedores = Fornecedor::all();
-    return view('home', ['fornecedores' => $fornecedores]);
+    return view('home', compact('fornecedores'));
+    
 }
 
     
