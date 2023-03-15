@@ -12,17 +12,30 @@
             <div class="card">
                 <div class="card-body">
                     <p class="mb-0">Você está logado!</p>
-                    @foreach($fornecedores as $fornecedor)
-    <div>
-        <h3>{{ $fornecedor->nome }}</h3>
-        <p>{{ $fornecedor->email }}</p>
-        <p>{{ $fornecedor->telefone }}</p>
-    </div>
-@endforeach
-
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>CPF/CNPJ</th>
+                                <th>Data de Cadastro</th>
+                                <th>Telefones</th>
+                                <th>Empresa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($fornecedores as $fornecedor)
+                                <tr>
+                                    <td>{{ $fornecedor->nome }}</td>
+                                    <td>{{ $fornecedor->cpf_cnpj }}</td>
+                                    <td>{{ $fornecedor->data_cadastro }}</td>
+                                    <td>{{ $fornecedor->telefones }}</td>
+                                    <td>{{ $fornecedor->empresa_id }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 @stop
-
