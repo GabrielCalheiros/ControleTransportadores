@@ -24,15 +24,22 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-    public function index(Request $request)
-{
-    $selectedEmpresaId = $request->input('empresa_id');
-    $empresas = Empresa::all();
-    $fornecedores = Fornecedor::when($selectedEmpresaId, function($query, $selectedEmpresaId) {
-        return $query->where('empresa_id', $selectedEmpresaId);
-    })->get();
-    return view('home', compact('fornecedores', 'empresas', 'selectedEmpresaId'));
-}
+     public function index(Request $request)
+     {
+         $selectedEmpresaId = $request->input('empresa_id');
+         $empresas = Empresa::all();
+     
+         $fornecedores = Fornecedor::query();
+     
+         if ($selectedEmpresaId) {
+             $fornecedores->where('empresa_id', $selectedEmpresaId);
+         }
+     
+         $fornecedores = $fornecedores->get();
+     
+         return view('home', compact('fornecedores', 'empresas', 'selectedEmpresaId'));
+     }
+     
 
 
 

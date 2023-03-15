@@ -82,3 +82,96 @@ Cadastrar Fornecedor - Create an Fornecedor in the database
     • Data/hora de cadastro;
     • Telefone (An array of cellphones).
 ----------------------------------------------------------------
+
+The Fornecedor blade is not working. I will present to you all the files related to it and you will give me an full reading of the code. Please, waito for all the files to be sended before starting trobloushooting.
+The files are:
+the controler of Fornecedor
+the blade for fornecedor
+the web.php 
+the model
+migration
+One after the other, each one in its own message. on each message, you will repond with "ok, i read file [name of the file], now you only need to send to me [list the files that i still did not sended]". After presenting all of codes, i will present the error and you will take all the code into consideration and point out to me the error. Following now, the first code:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+home blade
+--------------------------------------------------------------------------------------------------------
+@extends('adminlte::page')
+
+@section('title', 'AdminLTE')
+
+@section('content_header')
+<h1 class="m-0 text-dark">Listagem de Fornecedores:</h1>
+@stop
+
+@section('content')
+<div class="row">
+<div class="col-12">
+<div class="card">
+<div class="card-body">
+    <form method="get" action="{{ route('home') }}">
+        <div class="form-group">
+            <label for="empresa_id">Filtrar por empresa:</label>
+            <select class="form-control" id="empresa_id" name="empresa_id">
+                <option value="">Todas as empresas</option>
+                @foreach($empresas as $empresa)
+                    <option value="{{ $empresa->id }}" {{ $empresa->id == $selectedEmpresaId ? 'selected' : '' }}>
+                        {{ $empresa->nome_fantasia }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+    </form>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF/CNPJ</th>
+                <th>Data de Cadastro</th>
+                <th>Telefones</th>
+                <th>Empresa</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($fornecedores as $fornecedor)
+                @if($fornecedor->empresa_id == $selectedEmpresaId || $selectedEmpresaId == '')
+                    <tr>
+                        <td>{{ $fornecedor->nome }}</td>
+                        <td>{{ $fornecedor->cpf_cnpj }}</td>
+                        <td>{{ $fornecedor->data_cadastro }}</td>
+                        <td>{{ $fornecedor->telefones }}</td>
+                        <td>{{ $fornecedor->empresa_id }}</td>
+                    </tr>
+                @endif
+            @endforeach
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+</div>
+@stop
