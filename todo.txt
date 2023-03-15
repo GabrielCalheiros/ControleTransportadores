@@ -52,12 +52,6 @@ Add necessary tests to ensure functionality and prevent regressions
 
 
 ------------------------------------------------------------------------------------
-ADD cadastro de empresa
-
-1 - Create a new route in your web.php file that points to a controller method to handle the form submission:
-2 - Create a new controller using the command php artisan make:controller EmpresaController, and define a store method that receives the form data and saves it to the database:
-3 - Create a new blade view file, for example empresas/create.blade.php, that contains the form to register a new company:
-4 - Finally, add a new menu item to your AdminLTE sidebar that links to the new page. You can do this by adding the following code to the menu.blade.php file:
 
 You are an experienced it professional helping me with my project. You can ask specifc names and lines, and ask me to perform console commands to get their output and help me solve my problem. If nescessery, read again our old messages to get information on the project. I have little experience with OOP and Laravel, and you should take thi into consideration.
 Tecchnical Table of the project:
@@ -98,6 +92,13 @@ One after the other, each one in its own message. on each message, you will repo
 
 
 
+add comments in portuguese
+add read-me file
+add filters in the listing
+Caso a empresa seja do Paraná, não permitir cadastrar um fornecedor pessoa física menor de
+idade;
+Caso o fornecedor seja pessoa física, também é necessário cadastrar o RG e a data de
+nascimento;
 
 
 
@@ -114,64 +115,63 @@ One after the other, each one in its own message. on each message, you will repo
 
 
 
-
-home blade
---------------------------------------------------------------------------------------------------------
+cadastro empreas:
+------------------------------------------------------------------
 @extends('adminlte::page')
 
-@section('title', 'AdminLTE')
+@section('title', 'Cadastrar Empresa')
 
 @section('content_header')
-<h1 class="m-0 text-dark">Listagem de Fornecedores:</h1>
+    <h1>Cadastrar Empresa</h1>
 @stop
 
 @section('content')
-<div class="row">
-<div class="col-12">
-<div class="card">
-<div class="card-body">
-    <form method="get" action="{{ route('home') }}">
-        <div class="form-group">
-            <label for="empresa_id">Filtrar por empresa:</label>
-            <select class="form-control" id="empresa_id" name="empresa_id">
-                <option value="">Todas as empresas</option>
-                @foreach($empresas as $empresa)
-                    <option value="{{ $empresa->id }}" {{ $empresa->id == $selectedEmpresaId ? 'selected' : '' }}>
-                        {{ $empresa->nome_fantasia }}
-                    </option>
-                @endforeach
-            </select>
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
         </div>
-        <button type="submit" class="btn btn-primary">Filtrar</button>
+    @endif
+
+    <form action="{{ route('empresas.store') }}" method="POST">
+        @csrf
+        <div class="form-group">
+            <label for="endereco">Endereço</label>
+            <input type="text" class="form-control" id="cep" name="cep" maxlength="8" required>
+        </div>
+        
+        <script>
+            document.getElementById("cep").addEventListener("blur", function() {
+                var cep = this.value.replace(/\D/g, '');
+                if (cep.length == 8) {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", "https://viacep.com.br/ws/"+cep+"/json/");
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            var response = JSON.parse(xhr.responseText);
+                            if (response.erro) {
+                                alert("CEP não encontrado");
+                            } else {
+                                // Fill in the address fields
+                                document.getElementById("endereco").value = response.logradouro;
+                                document.getElementById("bairro").value = response.bairro;
+                                document.getElementById("cidade").value = response.localidade;
+                                document.getElementById("estado").value = response.uf;
+                            }
+                        }
+                    }
+                    xhr.send();
+                }
+            });
+        </script>
+        
+        <div class="form-group">
+            <label for="nome_fantasia">Nome Fantasia</label>
+            <input type="text" class="form-control" id="nome_fantasia" name="nome_fantasia" required>
+        </div>
+        <div class="form-group">
+            <label for="cnpj">CNPJ</label>
+            <input type="text" class="form-control" id="cnpj" name="cnpj" maxlength="14" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>
-
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>CPF/CNPJ</th>
-                <th>Data de Cadastro</th>
-                <th>Telefones</th>
-                <th>Empresa</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($fornecedores as $fornecedor)
-                @if($fornecedor->empresa_id == $selectedEmpresaId || $selectedEmpresaId == '')
-                    <tr>
-                        <td>{{ $fornecedor->nome }}</td>
-                        <td>{{ $fornecedor->cpf_cnpj }}</td>
-                        <td>{{ $fornecedor->data_cadastro }}</td>
-                        <td>{{ $fornecedor->telefones }}</td>
-                        <td>{{ $fornecedor->empresa_id }}</td>
-                    </tr>
-                @endif
-            @endforeach
-        </tbody>
-    </table>
-</div>
-</div>
-</div>
-</div>
 @stop
