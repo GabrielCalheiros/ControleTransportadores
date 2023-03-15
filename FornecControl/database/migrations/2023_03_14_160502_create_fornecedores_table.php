@@ -12,14 +12,15 @@ return new class extends Migration
     public function up(): void
     {
 
-        Schema::create('fornecedors', function (Blueprint $table) {
-            $table->id('funcionario_id');
+        Schema::create('fornecedores', function (Blueprint $table) {
+            $table->id();
             $table->string('nome');
             $table->string('cpf_cnpj')->unique();
             $table->dateTime('data_cadastro');
             $table->json('telefones');
             $table->unsignedBigInteger('empresa_id');
-            $table->foreign('empresa_id')->references('empresa_id')->on('empresas');
+            $table->foreign('empresa_id')->references('id')->on('empresas');
+            $table->timestamps(); // Add the timestamps fields
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fornecedors');
+        Schema::dropIfExists('fornecedores');
     }
 };

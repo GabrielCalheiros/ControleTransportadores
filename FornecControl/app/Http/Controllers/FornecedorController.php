@@ -29,17 +29,18 @@ class FornecedorController extends Controller
     }
 
     // Function to store the new Fornecedor in the database
+
     public function store(Request $request)
     {
         // Validate the form data
         $request->validate([
             'nome' => 'required|max:255',
-            'cpf_cnpj' => 'required|unique:fornecedors|max:20',
+            'cpf_cnpj' => 'required|unique:fornecedores|max:20',
             'data_cadastro' => 'required|date',
             'telefones' => 'nullable|json',
             'empresa_id' => 'required|exists:empresas,id',
         ]);
-
+    
         // Create a new Fornecedor object and set its properties
         $fornecedor = new Fornecedor;
         $fornecedor->nome = $request->nome;
@@ -47,11 +48,15 @@ class FornecedorController extends Controller
         $fornecedor->data_cadastro = $request->data_cadastro;
         $fornecedor->telefones = $request->telefones;
         $fornecedor->empresa_id = $request->empresa_id;
-
+    
         // Save the new Fornecedor to the database
         $fornecedor->save();
-
+    
+        // Flash a success message to the session
+        session()->flash('success', 'Fornecedor adicionado com sucesso!');
+    
         // Redirect back to the list of Fornecedores
-        return redirect()->route('fornecedores.index');
+        return redirect()->back()->with('success', 'Fornecedor adicionado com sucesso!');
     }
+    
 }
