@@ -23,3 +23,4 @@ Para instalar este sistema, siga estas etapas:
 *Usuário: adminTeste
 *E-mail: teste@teste.com
 *Senha: 12345678
+*
